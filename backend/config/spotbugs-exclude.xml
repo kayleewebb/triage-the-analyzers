@@ -7,4 +7,10 @@
 
      Unlike the baseline, this file may grow, but every entry is a reviewed decision. -->
 <FindBugsFilter>
+    <!-- JPA entities, mutable DTO carriers, and Spring-injected fields share their
+         references on purpose. A defensive copy breaks Hibernate's persistent
+         collections and the bidirectional associations those getters return. -->
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+    </Match>
 </FindBugsFilter>

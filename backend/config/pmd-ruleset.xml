@@ -13,5 +13,13 @@
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
     <description>PMD quickstart, with Project Pulse's decisions.</description>
     <rule ref="rulesets/java/quickstart.xml">
+        <!-- An explicit empty constructor is the no-arg constructor JPA needs once a class has any other constructor.
+             UncommentedEmptyConstructor asks for a comment on it. UnnecessaryConstructor asks to delete it when it is the only constructor.
+             Commenting it does not clear the second rule, and deleting it leaves an entity one new constructor away from having no no-arg constructor.
+             Result keeps the same empty constructor so Jackson can build the API envelope. -->
+        <exclude name="UncommentedEmptyConstructor"/>
+        <exclude name="UnnecessaryConstructor"/>
+        <!-- These calls use SLF4J {} placeholders and only pass inexpensive getters, collection sizes, or values already computed. -->
+        <exclude name="GuardLogStatement"/>
     </rule>
 </ruleset>
