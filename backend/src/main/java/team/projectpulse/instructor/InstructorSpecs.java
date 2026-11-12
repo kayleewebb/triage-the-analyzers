@@ -5,7 +5,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Locale;
 
-public class InstructorSpecs {
+public final class InstructorSpecs {
 
     private InstructorSpecs() {
         // Static specification factories.
