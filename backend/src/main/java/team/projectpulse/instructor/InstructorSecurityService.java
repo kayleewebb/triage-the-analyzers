@@ -40,7 +40,7 @@ public class InstructorSecurityService {
     public boolean isCurrentUserAdminOfInstructorCourse(Integer instructorId) {
         Integer adminIdFromJwt = this.userUtils.getUserId();
         Instructor instructor = this.instructorRepository.findById(instructorId).orElse(null);
-        if (instructor == null) {
+        if (instructor == null) { // NOPMD - no instructor row is a denial and returns before the course-admin check
             return false;
         }
         return instructor.getCourses().stream()
