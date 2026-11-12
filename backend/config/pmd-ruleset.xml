@@ -19,5 +19,7 @@
              Result keeps the same empty constructor so Jackson can build the API envelope. -->
         <exclude name="UncommentedEmptyConstructor"/>
         <exclude name="UnnecessaryConstructor"/>
+        <!-- These calls use SLF4J {} placeholders and only pass inexpensive getters, collection sizes, or values already computed. -->
+        <exclude name="GuardLogStatement"/>
     </rule>
 </ruleset>
